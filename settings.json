@@ -1,0 +1,13 @@
+{
+    "low-temperature": 15.0,
+    "light-on-time": "09:00",
+    "heat-mat-auto": true,
+    "high-temperature": 25.0,
+    "light-auto": false,
+    "low-humidity": 60,
+    "light-off-time": "16:30",
+    "pump-auto": false,
+    "fan-auto": false,
+    "update-frequency": 120,
+    "days-to-keep": 7
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=Vivarium CTRL Web
+After=network.target
+
+[Service]
+ExecStart=python3 /home/pi/Vivarium_CTRL/vivarium_ctrl_web.py
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target

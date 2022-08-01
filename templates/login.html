@@ -1,0 +1,53 @@
+$def with (login_status)
+$var css: files/css/style.css
+$var scripts: files/scripts/script.js
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Vivarium_CTRL</title>
+        <meta name="description" content="Vivarium monitoring and control using a Raspberry Pi.">
+        <meta name="author" content="Daniel Dean <dd@danieldean.uk>">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        $if self.css:
+            $for style in self.css.split():
+                <link rel="stylesheet" href="$style"/>
+        $if self.scripts:
+            $for script in self.scripts.split():
+                <script src="$script"></script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Vivarium_CTRL</h1>
+        </div>
+        <div class="login-container">
+            <form onsubmit="login(); return false;">
+                <table id="login">
+                    <tr>
+                        <th colspan="2">Login</th>
+                    </tr>
+                    <tr>
+                        <td>Username: </td>
+                        <td><input type="text" id="username" name="username"></td>
+                    </tr>
+                    <tr>
+                        <td>Password: </td>
+                        <td><input type="password" id="password" name="password"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="form-buttons"><input type="submit" value="Login"></td>
+                    </tr>
+                    <tr>
+                        <td id="login-status" colspan="2">$login_status</td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="footer">
+            <p>Find me on <a href="https://github.com/danieldean/Vivarium_CTRL">GitHub</a></p>
+        </div>
+    </body>
+
+</html>

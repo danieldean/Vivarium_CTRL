@@ -1,0 +1,141 @@
+$def with (settings)
+$var css: files/css/style.css
+$var scripts: files/scripts/script.js
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Vivarium_CTRL</title>
+        <meta name="description" content="Vivarium monitoring and control using a Raspberry Pi.">
+        <meta name="author" content="Daniel Dean <dd@danieldean.uk>">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        $if self.css:
+            $for style in self.css.split():
+                <link rel="stylesheet" href="$style"/>
+        $if self.scripts:
+            $for script in self.scripts.split():
+                <script src="$script"></script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Vivarium_CTRL</h1>
+        </div>
+        <div class="settings-container">
+            <form onsubmit="updateSettings(this); return false;">
+                <table id="settings">
+                    <tr>
+                        <th colspan="2">Settings</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Update frequency:</th>
+                    </tr>
+                    <tr>
+                        <td>Wait in seconds: </td>
+                        <td><input type="number" name="update-frequency" min="1" max="3600" value="$settings['update-frequency']"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Days to keep:</th>
+                    </tr>
+                    <tr>
+                        <td>Number of days: </td>
+                        <td><input type="number" name="days-to-keep" min="1" max="365" value="$settings['days-to-keep']"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Control automatically?</th>
+                    </tr>
+                    <tr>
+                        <td>Heat Mat: </td>
+                        <td>
+                            <input type="hidden" name="heat-mat-auto" value="false">
+                            $if settings['heat-mat-auto']:
+                                <input type="checkbox" name="heat-mat-auto" value="true" checked>
+                            $else:
+                                <input type="checkbox" name="heat-mat-auto" value="true">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pump: </td>
+                        <td>
+                            <input type="hidden" name="pump-auto" value="false">
+                            $if settings['pump-auto']:
+                                <input type="checkbox" name="pump-auto" value="true" checked>
+                            $else:
+                                <input type="checkbox" name="pump-auto" value="true">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fan: </td>
+                        <td>
+                            <input type="hidden" name="fan-auto" value="false">
+                            $if settings['fan-auto']:
+                                <input type="checkbox" name="fan-auto" value="true" checked>
+                            $else:
+                                <input type="checkbox" name="fan-auto" value="true">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Light: </td>
+                        <td>
+                            <input type="hidden" name="light-auto" value="false">
+                            $if settings['light-auto']:
+                                <input type="checkbox" name="light-auto" value="true" checked>
+                            $else:
+                                <input type="checkbox" name="light-auto" value="true">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Temperature and humidity thresholds:</th>
+                    </tr>
+                    <tr>
+                        <td>Low Temperature (°C): </td>
+                        <td><input type="number" name="low-temperature" min="-50" max="50" step="0.1" value="$settings['low-temperature']"></td>
+                    </tr>
+                    <tr>
+                        <td>High Temperature (°C): </td>
+                        <td><input type="number" name="high-temperature" min="-50" max="50" step="0.1" value="$settings['high-temperature']"></td>
+                    </tr>
+                    <tr>
+                        <td>Low Humidity (%): </td>
+                        <td><input type="number" name="low-humidity" min="0" max="100" value="$settings['low-humidity']"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Time schedules:</th>
+                    </tr>
+                    <tr>
+                        <td>Light: </td>
+                        <td><label for="light-on-time">On at: </label><input type="time" id="light-on-time" name="light-on-time" value="$settings['light-on-time']"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label for="light-off-time">Off at: </label><input type="time" id="light-off-time" name="light-off-time" value="$settings['light-off-time']"></td>
+                    </tr>
+                    <tr>
+                        <td class="form-buttons" colspan="2">
+                            <input type="submit" value="Update">
+                            <input type="reset" onclick="resetSettingsStatus();">
+                            <input type="button" value="Back" onclick="location.href='/';">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="settings-status" colspan="2"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="footer">
+            <p>Find me on <a href="https://github.com/danieldean/Vivarium_CTRL">GitHub</a></p>
+        </div>
+    </body>
+
+</html>

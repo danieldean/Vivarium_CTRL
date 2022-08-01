@@ -1,0 +1,214 @@
+/* Required for sticky footer. */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/* Set defaults and background. */
+body {
+    font-family: sans-serif;
+    font-size: 100%;
+    margin: 0 0 60px; /* Bottom margin is footer height. */
+    background: url('../images/landscape-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Header container and styling. */
+.header {
+    background: rgba(100, 100, 100, 0.6);
+    overflow: hidden;
+}
+.header h1 {
+    font-size: 3em;
+    letter-spacing: 0.1em;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+/* Tile container and tiles to display current status. */
+.tile-container {
+    margin: 10px auto 0;
+    max-width: 1000px;
+    font-size: 0;
+    display: flex;
+    justify-content: center;
+}
+.tile-container form {
+    display: none;
+}
+.tile {
+    height: 100px;
+    width: 100px;
+    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+    background-size: auto 25%;
+    background-color: rgba(100, 100, 100, 0.8);
+}
+.tile a {
+    color: rgb(255, 255, 255);
+}
+.tile input[type=button] {
+    font-size: 1rem;
+}
+#temperature-tile {
+    background-image: url('../images/thermometer-half-solid-white.svg');
+}
+#humidity-tile {
+    background-image: url('../images/tint-solid-white.svg');
+}
+#camera-tile {
+    background-image: url('../images/video-solid-white.svg');
+}
+#pump-tile {
+    background-image: url('../images/water-solid-white.svg');
+}
+#light-tile {
+    background-image: url('../images/lightbulb-solid-white.svg');
+}
+#heat-mat-tile {
+    background-image: url('../images/fire-solid-white.svg');
+}
+#fan-tile {
+    background-image: url('../images/fan-solid-white.svg');
+}
+
+/* Full width chart container with centering. Maximum chart sizing. */
+.chart-container {
+    background: rgba(255, 255, 255, 0.9);
+    max-height: 400px;
+    max-width: 1000px;
+    margin: 10px auto 0;
+}
+.chart-container canvas {
+    max-height: 400px;
+    max-width: 1000px;
+}
+
+/* Hours select container. */
+.hours-select-container {
+    max-width: 968px;
+    margin: 10px auto 0;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.9);
+}
+.hours-select-container form {
+    display: none;
+}
+
+/* Scrollable table with sticky headers. */
+.table-container {
+    overflow-y: auto;
+    max-height: 400px;
+    max-width: 1000px;
+    margin: 10px auto 0;
+}
+.table-container thead th {
+    position: sticky;
+    top: 0;
+}
+
+/* Table styling. */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+}
+th, td {
+    padding: 8px 16px;
+}
+th {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: rgba(100, 100, 100, 0.8);
+}
+td.form-buttons {
+    text-align: center;
+}
+
+/* Styling for login page. */
+.login-container {
+    max-width: 500px;
+    margin: 10px auto 0;
+}
+#login-status {
+    text-align: center;
+    color: rgb(255, 0, 0);
+}
+
+/* Styling for settings page. */
+.settings-container {
+    max-width: 500px;
+    margin: 10px auto 0;
+}
+#settings-status {
+    text-align: center;
+    color: rgb(255, 0, 0);
+}
+
+/* Styling for actions container. */
+.actions-container {
+    text-align: center;
+    max-width: 500px;
+    margin: 10px auto 0;
+}
+
+/* Sticky footer container and styling. */
+.footer {
+    margin-top: 10px;
+    background: rgba(100, 100, 100, 0.6);
+    overflow: hidden;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+}
+.footer a, p {
+   color: rgba(255, 255, 255, 0.8);
+}
+
+/* For smaller screens. */
+@media screen and (max-width: 999px) {
+    body {
+        background: url('../images/portrait-bg.jpg') repeat center center scroll;
+        background-size: cover;
+    }
+    .header h1 {
+        font-size: 2em;
+    }
+    .tile-container {
+        margin: 0;
+        display: block;
+    }
+    .tile {
+        height: 50px;
+        width: calc(90% - 10px);
+        margin: 10px auto 0;
+        display: flex;
+        background-size: auto 50%;
+    }
+    .chart-container, .table-container, .login-container, .settings-container {
+        width: 90%;
+    }
+    .hours-select-container {
+        width: calc(90% - 32px);
+    }
+    .table-container table {
+        width: 1000px;
+    }
+    input[type=number] {
+        width: 50px;
+    }
+    input[type=time] {
+        width: 80px;
+    }
+}
