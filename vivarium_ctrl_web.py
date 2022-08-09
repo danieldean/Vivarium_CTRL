@@ -139,7 +139,7 @@ class Reload:
                     device_state.state = to_string(device_state.state)
                 # Create a combined dict to return.
                 return_data.update({'sensor_readings': sensor_readings,
-                                   'device_states': device_state})
+                                   'device_states': device_states})
             # Check backend process is running.
             pid = db.select('flags', where='flag="pid"')
             if pid and psutil.pid_exists(pid[0].state):

@@ -147,8 +147,8 @@ function reload() {
 
                     if(sensorReadings.length > 0) {
                         // Update temperature and humidity tiles.
-                        document.getElementById("temperature-tile").innerHTML = sensorReadings[sensorReadings.length - 1].temperature + "°C";
-                        document.getElementById("humidity-tile").innerHTML = sensorReadings[sensorReadings.length - 1].humidity + "%";
+                        document.getElementById("temperature-tile").innerHTML = sensorReadings[0].temperature + "°C";
+                        document.getElementById("humidity-tile").innerHTML = sensorReadings[0].humidity + "%";
                     };
 
                     // Check if readings should be removed.
@@ -191,10 +191,10 @@ function reload() {
 
                 };
 
+                // Split device states and update tiles.
+                var deviceStates = data.device_states;
                 if(deviceStates != null) {
 
-                    // Split device states and update tiles.
-                    var deviceStates = data.device_states;
                     for(i = 0; i < deviceStates.length; i++) {
                         document.getElementById(deviceStates[i].device).value = deviceStates[i].state;
                     };
