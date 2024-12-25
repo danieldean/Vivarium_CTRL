@@ -1,3 +1,12 @@
+## <p style="text-align:center;">Dedicated to Little Fatso (September 2019 - 23rd December 2024)</p>
+
+<img src="little_fatso.jpg" width=100% align=center>
+
+This project saw him through his five years, not skipping a beat in maintaining temperature or keeping his lighting to
+schedule. His funny little ways will be missed.
+
+---
+
 # <img src="./files/images/frog-solid.svg" height="50"> Vivarium_CTRL
 
 **Vivarium monitoring and control using a Raspberry Pi.**
